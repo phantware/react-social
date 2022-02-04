@@ -28,13 +28,13 @@ const Profile = () => {
               <h4 className='profileInfoName'>Ismail Jamiu</h4>
               <span className='profileInfoDesc'>
                 Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Similique, a.
+                Similique.
               </span>
             </div>
           </div>
           <div className='profileRightBottom'>
             <Feed />
-            <Rightbar />
+            <Rightbar profile />
           </div>
         </div>
       </div>
