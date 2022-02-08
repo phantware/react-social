@@ -10,7 +10,7 @@ const Feed = () => {
   useEffect(() => {
     const fetchPosts = async () => {
       const res = await axios.get('posts/timeline/61ff0e08a71109eb703bc660')
-      console.log(res)
+      setPosts(res.data)
     }
     fetchPosts()
   }, [])
@@ -18,10 +18,10 @@ const Feed = () => {
     <div className='feed'>
       <div className='feedWrapper'>
         <Share />
-        {/* {Posts.map((p) => {
+        {posts.map((p) => {
           const { id } = p
           return <Post key={id} post={p} />
-        })} */}
+        })}
       </div>
     </div>
   )
