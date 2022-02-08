@@ -8,6 +8,6 @@ export const LoginSuccess = (user) => ({
 })
 
 export const LoginError = (error) => ({
-  type: 'Login_FAILURE',
+  type: 'LOGIN_FAILURE',
   payload: error,
 })
