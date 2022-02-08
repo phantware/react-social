@@ -9,11 +9,11 @@ const Post = ({ post }) => {
   const PF = process.env.REACT_APP_PUBLIC_FOLDER
   const [like, setLike] = useState(post.likes.length)
   const [isLiked, setisLiked] = useState(false)
-  const [user, setUser] = useState([])
+  const [user, setUser] = useState({})
 
   useEffect(() => {
     const fetchUser = async () => {
-      const res = await axios.get(`/users/${post.userId}`)
+      const res = await axios.get(`/users?userId=${post.userId}`)
       setUser(res.data)
     }
     fetchUser()
