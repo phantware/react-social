@@ -10,7 +10,7 @@ const INITIAL_STATE = {
 export const AuthContext = createContext(INITIAL_STATE)
 
 export const AuthContextProvider = ({ children }) => {
-  const [state, dispath] = useReducer(AuthReducer, INITIAL_STATE)
+  const [state, dispatch] = useReducer(AuthReducer, INITIAL_STATE)
 
   return (
     <AuthContext.Provider
@@ -18,7 +18,7 @@ export const AuthContextProvider = ({ children }) => {
         user: state.user,
         isFetching: state.isFetching,
         error: state.error,
-        dispath,
+        dispatch,
       }}
     >
       {children}

@@ -1,13 +1,23 @@
-import React, { useRef } from 'react'
+import React, { useContext, useRef } from 'react'
+import { CircularProgress } from '@material-ui/core'
 import './login.css'
+import { loginCall } from '../../apiCalls'
+import { AuthContext } from '../../context/AuthContext'
 
 const Login = () => {
   const email = useRef()
   const password = useRef()
+  const { user, isFetching, error, dispatch } = useContext(AuthContext)
+
   const handleClick = (e) => {
     e.preventDefault()
-    console.log(email.current.value)
+    loginCall(
+      { email: email.current.value, password: password.current.value },
+      dispatch
+    )
   }
+  console.log('I am user', user)
+
   return (
     <div className='login'>
       <div className='loginWrapper'>
@@ -34,10 +44,20 @@ const Login = () => {
               className='loginInput'
               ref={password}
             />
-            <button className='loginButton'>Log In</button>
-            <span className='loginForgot'>Forgot Password</span>
+            <button className='loginButton' type='submit' disabled={isFetching}>
+              {isFetching ? (
+                <CircularProgress color='white' size='20px' />
+              ) : (
+                'Log In'
+              )}
+            </button>
+            <span className='loginForgot'>Forgot Password?</span>
             <button className='loginRegisterButton'>
-              Create a New Account
+              {isFetching ? (
+                <CircularProgress color='white' size='20px' />
+              ) : (
+                'Create a New Account'
+              )}
             </button>
           </form>
         </div>
