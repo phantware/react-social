@@ -4,6 +4,7 @@ import { Users } from '../../dummyData'
 import { useState } from 'react'
 
 const Post = ({ post }) => {
+  const PF = process.env.REACT_APP_PUBLIC_FOLDER
   const [like, setLike] = useState(post.like)
   const [isLiked, setisLiked] = useState(false)
 
@@ -32,18 +33,18 @@ const Post = ({ post }) => {
         </div>
         <div className='postCenter'>
           <span className='postText'>{post?.desc}</span>
-          <img src={post.photo} alt='post pics' className='postImg' />
+          <img src={PF + post.photo} alt='post pics' className='postImg' />
         </div>
         <div className='postBottom'>
           <div className='postBottomLeft'>
             <img
-              src='/assets/like.png'
+              src={`${PF}like.png`}
               alt='like-icon'
               className='likeIcon'
               onClick={likeHandler}
             />
             <img
-              src='/assets/heart.png'
+              src={`${PF}heart.png`}
               alt='heart-icon'
               className='likeIcon'
               onClick={likeHandler}
