@@ -4,12 +4,20 @@ import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import { format } from 'timeago.js'
 import { Link } from 'react-router-dom'
+import { useContext } from 'react'
+import { AuthContext } from '../../context/AuthContext'
+import { Posts } from '../../dummyData'
 
 const Post = ({ post }) => {
   const PF = process.env.REACT_APP_PUBLIC_FOLDER
   const [like, setLike] = useState(post.likes.length)
   const [isLiked, setisLiked] = useState(false)
   const [user, setUser] = useState({})
+  const { user: currentUser } = useContext(AuthContext)
+
+  useEffect(() => {
+    setisLiked(post.likes.includes(currentUser._id))
+  }, [currentUser._id, post.likes])
 
   useEffect(() => {
     const fetchUser = async () => {
@@ -20,6 +28,9 @@ const Post = ({ post }) => {
   }, [post.userId])
 
   const likeHandler = () => {
+    try {
+      axios.put('/posts/' + post._id + '/like', { userId: currentUser._id })
+    } catch (error) {}
     setLike(isLiked ? like - 1 : like + 1)
     setisLiked(!isLiked)
   }
