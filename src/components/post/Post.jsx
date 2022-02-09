@@ -6,7 +6,6 @@ import { format } from 'timeago.js'
 import { Link } from 'react-router-dom'
 import { useContext } from 'react'
 import { AuthContext } from '../../context/AuthContext'
-import { Posts } from '../../dummyData'
 
 const Post = ({ post }) => {
   const PF = process.env.REACT_APP_PUBLIC_FOLDER
