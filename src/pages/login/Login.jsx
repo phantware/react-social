@@ -7,7 +7,7 @@ import { AuthContext } from '../../context/AuthContext'
 const Login = () => {
   const email = useRef()
   const password = useRef()
-  const { user, isFetching, error, dispatch } = useContext(AuthContext)
+  const { user, isFetching, dispatch } = useContext(AuthContext)
 
   const handleClick = (e) => {
     e.preventDefault()
