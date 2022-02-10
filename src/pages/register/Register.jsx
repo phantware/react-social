@@ -1,9 +1,9 @@
 import axios from 'axios'
 import { useRef } from 'react'
-import { useHistory } from 'react-router'
 import './register.css'
+import { useHistory } from 'react-router'
 
-const Register = () => {
+export default function Register() {
   const username = useRef()
   const email = useRef()
   const password = useRef()
@@ -13,7 +13,7 @@ const Register = () => {
   const handleClick = async (e) => {
     e.preventDefault()
     if (passwordAgain.current.value !== password.current.value) {
-      passwordAgain.current.setCustomValidity("Password don't match")
+      passwordAgain.current.setCustomValidity("Passwords don't match!")
     } else {
       const user = {
         username: username.current.value,
@@ -23,61 +23,58 @@ const Register = () => {
       try {
         await axios.post('/auth/register', user)
         history.push('/login')
-      } catch (error) {
-        console.log(error)
+      } catch (err) {
+        console.log(err)
       }
     }
   }
 
   return (
-    <div className='register'>
-      <div className='registerWrapper'>
-        <div className='registerLeft'>
-          <h3 className='registerLogo'>Lets Konnect</h3>
-          <span className='registerDesc'>
-            Connect with friends and the world around you on Lets Konnect
+    <div className='login'>
+      <div className='loginWrapper'>
+        <div className='loginLeft'>
+          <h3 className='loginLogo'>Lamasocial</h3>
+          <span className='loginDesc'>
+            Connect with friends and the world around you on Lamasocial.
           </span>
         </div>
-        <div className='registerRight'>
-          <form className='registerBox' onSubmit={handleClick}>
+        <div className='loginRight'>
+          <form className='loginBox' onSubmit={handleClick}>
             <input
               placeholder='Username'
               required
-              className='registerInput'
               ref={username}
+              className='loginInput'
             />
             <input
               placeholder='Email'
-              type='email'
               required
-              className='registerInput'
               ref={email}
+              className='loginInput'
+              type='email'
             />
             <input
               placeholder='Password'
+              required
+              ref={password}
+              className='loginInput'
               type='password'
               minLength='6'
-              required
-              className='registerInput'
-              ref={password}
             />
             <input
               placeholder='Password Again'
-              type='password'
               required
-              className='registerInput'
               ref={passwordAgain}
+              className='loginInput'
+              type='password'
             />
-
-            <button className='registerButton' type='submit'>
+            <button className='loginButton' type='submit'>
               Sign Up
             </button>
-            <button className='registerRegisterButton'>Log into Account</button>
+            <button className='loginRegisterButton'>Log into Account</button>
           </form>
         </div>
       </div>
     </div>
   )
 }
-
-export default Register
