@@ -1,13 +1,13 @@
-import React, { useContext, useRef } from 'react'
-import { CircularProgress } from '@material-ui/core'
+import { useContext, useRef } from 'react'
 import './login.css'
 import { loginCall } from '../../apiCalls'
 import { AuthContext } from '../../context/AuthContext'
+import { CircularProgress } from '@material-ui/core'
 
-const Login = () => {
+export default function Login() {
   const email = useRef()
   const password = useRef()
-  const { user, isFetching, dispatch } = useContext(AuthContext)
+  const { isFetching, dispatch } = useContext(AuthContext)
 
   const handleClick = (e) => {
     e.preventDefault()
@@ -16,15 +16,14 @@ const Login = () => {
       dispatch
     )
   }
-  console.log('I am user', user)
 
   return (
     <div className='login'>
       <div className='loginWrapper'>
         <div className='loginLeft'>
-          <h3 className='loginLogo'>Lets Konnect</h3>
+          <h3 className='loginLogo'>Lamasocial</h3>
           <span className='loginDesc'>
-            Connect with friends and the world around you on Lets Konnect
+            Connect with friends and the world around you on Lamasocial.
           </span>
         </div>
         <div className='loginRight'>
@@ -65,5 +64,3 @@ const Login = () => {
     </div>
   )
 }
-
-export default Login
