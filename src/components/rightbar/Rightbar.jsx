@@ -12,9 +12,9 @@ export default function Rightbar({ user }) {
   const [friends, setFriends] = useState([])
   const { user: currentUser, dispatch } = useContext(AuthContext)
   const [followed, setFollowed] = useState(
-    currentUser.followings.includes(user?.id)
+    currentUser?.followings?.includes(user?.id)
   )
-
+  console.log('here is friend', friends)
   useEffect(() => {
     const getFriends = async () => {
       try {
@@ -106,7 +106,7 @@ export default function Rightbar({ user }) {
                   src={
                     friend.profilePicture
                       ? PF + friend.profilePicture
-                      : PF + 'person/noAvatar.png'
+                      : '/assets/person/noAvatar.png'
                   }
                   alt=''
                   className='rightbarFollowingImg'

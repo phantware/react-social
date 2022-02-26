@@ -32,8 +32,8 @@ export default function Profile() {
                 className='profileCoverImg'
                 src={
                   user.coverPicture
-                    ? PF + user.coverPicture
-                    : PF + 'person/noCover.png'
+                    ? user.coverPicture
+                    : '/assets/person/noCover.png'
                 }
                 alt=''
               />
@@ -41,8 +41,8 @@ export default function Profile() {
                 className='profileUserImg'
                 src={
                   user.profilePicture
-                    ? PF + user.profilePicture
-                    : PF + 'person/noAvatar.png'
+                    ? user.profilePicture
+                    : '/asssets/person/noAvatar.png'
                 }
                 alt=''
               />

@@ -6,7 +6,8 @@ import './topbar.css'
 
 const Topbar = () => {
   const { user } = useContext(AuthContext)
-  const PF = process.env.REACT_APP_PUBLIC_FOLDER
+  // const PF = process.env.REACT_APP_PUBLIC_FOLDER
+  console.log('user', user)
   return (
     <div className='topbarContainer'>
       <div className='topbarLeft'>
@@ -46,8 +47,8 @@ const Topbar = () => {
           <img
             src={
               user.profilePicture
-                ? PF + user.profilePicture
-                : PF + 'person/noAvatar.png'
+                ? user.profilePicture
+                : '/assets/person/noAvatar.png'
             }
             alt='profile-pcs'
             className='topbarImg'
